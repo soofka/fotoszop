@@ -15,7 +15,7 @@ public class View {
 
     View() {
         try {
-            this.inputFile = ImageIO.read(new File("balloons_noisy.png"));
+            this.inputFile = ImageIO.read(new File("lekcja.jpg"));
         } catch(IOException e) {
             System.out.println(e);
         }
@@ -29,20 +29,13 @@ public class View {
         imageMenu.setMnemonic(KeyEvent.VK_I);
         menuBar.add(imageMenu);
 
+        // ZADANIE 1: dodaj przycisk do menu, korzystając z przykładu poniżej
+        // dodaj do przycisku własną nazwę i przycisk
+        // niech użycie przysisku tworzy obiekt twojej klasy
         JMenuItem grayScaleFilterMenuItem = new JMenuItem("(G)rayscale", KeyEvent.VK_G);
         grayScaleFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
         imageMenu.add(grayScaleFilterMenuItem);
         grayScaleFilterMenuItem.addActionListener(new GrayscaleFilter(this));
-
-        JMenuItem medianFilterMenuItem = new JMenuItem("(M)edian", KeyEvent.VK_M);
-        medianFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
-        imageMenu.add(medianFilterMenuItem);
-        medianFilterMenuItem.addActionListener(new MedianFilter(this));
-
-        JMenuItem averageFilterMenuItem = new JMenuItem("(A)verage", KeyEvent.VK_A);
-        averageFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, ActionEvent.ALT_MASK));
-        imageMenu.add(averageFilterMenuItem);
-        averageFilterMenuItem.addActionListener(new AverageFilter(this));
 
         this.frame.setJMenuBar(menuBar);
 
@@ -58,7 +51,6 @@ public class View {
     public void displayImage(BufferedImage originalImage) {
         Image image = originalImage.getScaledInstance(640, 480, Image.SCALE_SMOOTH);
         this.imageIcon.setImage(image);
-        System.out.println("display done");
     }
 
     public BufferedImage getInputFile() {
@@ -67,7 +59,6 @@ public class View {
 
     public void setInputFile(BufferedImage inputFile) {
         this.inputFile = inputFile;
-        System.out.println("set done");
     }
 
 }
