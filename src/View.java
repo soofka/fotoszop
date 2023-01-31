@@ -11,17 +11,19 @@ public class View {
 
     private JFrame frame;
     private BufferedImage inputFile = null;
-    private ImageIcon imageIcon;
+    private ImageIcon image;
 
     View() {
+        this.frame = new JFrame();
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setTitle("Fotoszop");
+
         try {
             this.inputFile = ImageIO.read(new File("lekcja.jpg"));
+            this.frame.setIconImage(ImageIO.read(new File("logo.png")));
         } catch(IOException e) {
             System.out.println(e);
         }
-
-        this.frame = new JFrame();
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -39,8 +41,8 @@ public class View {
 
         this.frame.setJMenuBar(menuBar);
 
-        this.imageIcon = new ImageIcon();
-        JLabel label = new JLabel(this.imageIcon);
+        this.image = new ImageIcon();
+        JLabel label = new JLabel(this.image);
         this.frame.getContentPane().add(label, BorderLayout.CENTER);
         this.displayImage(this.inputFile);
 
@@ -50,7 +52,7 @@ public class View {
 
     public void displayImage(BufferedImage originalImage) {
         Image image = originalImage.getScaledInstance(640, 480, Image.SCALE_SMOOTH);
-        this.imageIcon.setImage(image);
+        this.image.setImage(image);
     }
 
     public BufferedImage getInputFile() {
