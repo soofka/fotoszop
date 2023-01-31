@@ -19,7 +19,8 @@ public class View {
         this.frame.setTitle("Fotoszop");
 
         try {
-            this.inputFile = ImageIO.read(new File("lekcja.jpg"));
+//            this.inputFile = ImageIO.read(new File("lekcja.jpg"));
+            this.inputFile = ImageIO.read(new File("balony.png"));
             this.frame.setIconImage(ImageIO.read(new File("logo.png")));
         } catch(IOException e) {
             System.out.println(e);
@@ -38,6 +39,16 @@ public class View {
         grayScaleFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
         imageMenu.add(grayScaleFilterMenuItem);
         grayScaleFilterMenuItem.addActionListener(new GrayscaleFilter(this));
+
+        JMenuItem medianFilterMenuItem = new JMenuItem("(M)edian", KeyEvent.VK_M);
+        medianFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        imageMenu.add(medianFilterMenuItem);
+        medianFilterMenuItem.addActionListener(new MedianFilter(this));
+
+        JMenuItem gaussianFilterMenuItem = new JMenuItem("G(A)ussian", KeyEvent.VK_A);
+        gaussianFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        imageMenu.add(gaussianFilterMenuItem);
+        gaussianFilterMenuItem.addActionListener(new GaussianFilter(this));
 
         this.frame.setJMenuBar(menuBar);
 
