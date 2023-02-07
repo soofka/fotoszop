@@ -41,8 +41,8 @@ public class View {
 
         JMenuItem SaturationIncreaseMenuItem = new JMenuItem("(S)aturation Increase", KeyEvent.VK_S);
         SaturationIncreaseMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
-        imageMenu.add(myfilterMenuItem);
-        SaturationIncreaseMenuItem.addActionListener(new MyFilter(this));
+        imageMenu.add(SaturationIncreaseMenuItem);
+        SaturationIncreaseMenuItem.addActionListener(new SaturationIncrease(this));
 
         this.frame.setJMenuBar(menuBar);
 
