@@ -38,6 +38,10 @@ public class View {
         grayScaleFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
         imageMenu.add(grayScaleFilterMenuItem);
         grayScaleFilterMenuItem.addActionListener(new GrayscaleFilter(this));
+        JMenuItem removeRedFilterMenuItem = new JMenuItem("Remove (R)ed", KeyEvent.VK_R);
+        removeRedFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
+        imageMenu.add(removeRedFilterMenuItem);
+        removeRedFilterMenuItem.addActionListener(new RemoveRedFilter(this));
 
         this.frame.setJMenuBar(menuBar);
 
