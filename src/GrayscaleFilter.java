@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+
 // ZADANIE 2: zrób kopię tego pliku, nadaj mu własną nazwę
 // i zaimplementuj swoje przekształcenie obrazka w metodzie "actionPerformed"
 public class GrayscaleFilter implements ActionListener {
