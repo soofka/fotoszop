@@ -35,9 +35,16 @@ public class View {
         // dodaj do przycisku własną nazwę i przycisk
         // niech użycie przysisku tworzy obiekt twojej klasy
         JMenuItem grayScaleFilterMenuItem = new JMenuItem("(G)rayscale", KeyEvent.VK_G);
+        JMenuItem greenHueFilterMenuItem = new JMenuItem("Set hue to green", KeyEvent.VK_G);
+
         grayScaleFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        greenHueFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
+
         imageMenu.add(grayScaleFilterMenuItem);
+        imageMenu.add(greenHueFilterMenuItem);
+
         grayScaleFilterMenuItem.addActionListener(new GrayscaleFilter(this));
+        greenHueFilterMenuItem.addActionListener(new HueToGreenFilter(this));
 
         this.frame.setJMenuBar(menuBar);
 
