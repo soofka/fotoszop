@@ -36,15 +36,19 @@ public class View {
         // niech użycie przysisku tworzy obiekt twojej klasy
         JMenuItem grayScaleFilterMenuItem = new JMenuItem("(G)rayscale", KeyEvent.VK_G);
         JMenuItem greenHueFilterMenuItem = new JMenuItem("Set hue to green", KeyEvent.VK_G);
+        JMenuItem removeRedFilterMenuItem = new JMenuItem("Remove (R)ed", KeyEvent.VK_R);
 
         grayScaleFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
         greenHueFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
+        removeRedFilterMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
 
         imageMenu.add(grayScaleFilterMenuItem);
         imageMenu.add(greenHueFilterMenuItem);
+        imageMenu.add(removeRedFilterMenuItem);
 
         grayScaleFilterMenuItem.addActionListener(new GrayscaleFilter(this));
         greenHueFilterMenuItem.addActionListener(new HueToGreenFilter(this));
+        removeRedFilterMenuItem.addActionListener(new RemoveRedFilter(this));
 
         this.frame.setJMenuBar(menuBar);
 
