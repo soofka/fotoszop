@@ -50,6 +50,11 @@ public class View {
         greenHueFilterMenuItem.addActionListener(new HueToGreenFilter(this));
         removeRedFilterMenuItem.addActionListener(new RemoveRedFilter(this));
 
+        JMenuItem SaturationIncreaseMenuItem = new JMenuItem("(S)aturation Increase", KeyEvent.VK_S);
+        SaturationIncreaseMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        imageMenu.add(SaturationIncreaseMenuItem);
+        SaturationIncreaseMenuItem.addActionListener(new SaturationIncrease(this));
+
         this.frame.setJMenuBar(menuBar);
 
         this.image = new ImageIcon();
