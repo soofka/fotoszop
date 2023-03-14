@@ -1,22 +1,14 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-// ZADANIE 2: zrób kopię tego pliku, nadaj mu własną nazwę
-// i zaimplementuj swoje przekształcenie obrazka w metodzie "actionPerformed"
-public class GrayscaleFilter implements ActionListener {
+public class GrayscaleFilter extends Filter {
 
-    private View view;
-
-    GrayscaleFilter(View view) {
-        super();
-        this.view = view;
+    GrayscaleFilter(App app) {
+        super(app);
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        BufferedImage oldImage = this.view.getInputFile();
+    @Override
+    public BufferedImage transformImage(final BufferedImage oldImage) {
         int width = oldImage.getWidth();
         int height = oldImage.getHeight();
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -34,7 +26,7 @@ public class GrayscaleFilter implements ActionListener {
             }
         }
 
-        this.view.displayImage(newImage);
+        return newImage;
     }
 
 }

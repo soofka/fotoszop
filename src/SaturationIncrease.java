@@ -1,22 +1,15 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-// ZADANIE 2: zrób kopię tego pliku, nadaj mu własną nazwę
-// i zaimplementuj swoje przekształcenie obrazka w metodzie "actionPerformed"
-public class SaturationIncrease implements ActionListener {
+public class SaturationIncrease extends Filter {
 
-    private View view;
-
-    SaturationIncrease(View view) {
-        super();
-        this.view = view;
+    SaturationIncrease(App app) {
+        super(app);
     }
 
-    public void actionPerformed(ActionEvent e)
+    @Override
+    public BufferedImage transformImage(final BufferedImage oldImage)
     {
-        BufferedImage oldImage = this.view.getInputFile();
         int width = oldImage.getWidth();
         int height = oldImage.getHeight();
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -38,7 +31,7 @@ public class SaturationIncrease implements ActionListener {
             }
         }
 
-        this.view.displayImage(newImage);
+        return newImage;
     }
 
 }
