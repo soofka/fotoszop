@@ -1,38 +1,28 @@
-package com.company;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 
-public class FlipHorizontal implements ActionListener {
+public class FlipHorizontal extends Filter {
 
-    private View view;
-
-    FlipHorizontal(View view) {
-        super();
-        this.view = view;
+    FlipHorizontal(App app) {
+        super(app);
     }
 
-    public void actionPerformed(ActionEvent e)
+    @Override
+    public BufferedImage transformImage(final BufferedImage oldImage)
     {
-        BufferedImage oldImage = this.view.getInputFile();
         int width = oldImage.getWidth();
         int height = oldImage.getHeight();
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        try {
 
-            BufferedImage flipped = new BufferedImage(oldImage.getWidth(), oldImage.getHeight(), oldImage.getType());
-
-            for (int x = 0; x < oldImage.getWidth(); x++) {
-                for (int y = 0; y < oldImage.getHeight(); y++) {
-                    newImage.setRGB(oldImage.getWidth() - x - 1, y, oldImage.getRGB(x, y));
-                }
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                newImage.setRGB(width - x - 1, y, oldImage.getRGB(x, y));
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
         }
-        this.view.displayImage(newImage);
+
+        return newImage;
     }
 
 }

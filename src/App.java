@@ -31,6 +31,7 @@ public class App {
         addFilter(HueToGreenFilter.class, "Set hue to green (L)", KeyEvent.VK_L);
         addFilter(RemoveRedFilter.class, "Remove (R)ed", KeyEvent.VK_R);
         addFilter(SaturationIncrease.class, "(S)aturation Increase", KeyEvent.VK_S);
+        addFilter(FlipHorizontal.class, "Flip (H)orizontal", KeyEvent.VK_H);
 
         setInputImage("lekcja.jpg");
 
@@ -66,6 +67,7 @@ public class App {
         try {
             this.inputImage = ImageIO.read(new File(path));
             displayImage(inputImage);
+            this.frame.pack();
         } catch(IOException e) {
             System.out.println(e);
         }
@@ -78,7 +80,6 @@ public class App {
     public void displayImage(BufferedImage image) {
         Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         this.displayedImage.setImage(scaledImage);
-        this.frame.pack();
     }
 
 
