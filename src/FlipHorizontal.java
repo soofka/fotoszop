@@ -10,7 +10,7 @@ public class FlipHorizontal extends Filter {
     }
 
     @Override
-    public BufferedImage transformImage(final BufferedImage oldImage)
+    protected BufferedImage transformImage(final BufferedImage oldImage)
     {
         int width = oldImage.getWidth();
         int height = oldImage.getHeight();

@@ -8,7 +8,7 @@ public class GrayscaleFilter extends Filter {
     }
 
     @Override
-    public BufferedImage transformImage(final BufferedImage oldImage) {
+    protected BufferedImage transformImage(final BufferedImage oldImage) {
         int width = oldImage.getWidth();
         int height = oldImage.getHeight();
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
