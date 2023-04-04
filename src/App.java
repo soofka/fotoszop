@@ -31,6 +31,8 @@ public class App {
         addFilter(HueToGreenFilter.class, "Set hue to green (L)", KeyEvent.VK_L);
         addFilter(RemoveRedFilter.class, "Remove (R)ed", KeyEvent.VK_R);
         addFilter(SaturationIncrease.class, "(S)aturation Increase", KeyEvent.VK_S);
+//        addFilter(FlipHorizontal.class, "(F)lip Horizontal", KeyEvent.VK_F);
+        addFilter(Pixelate.class, "(P)ixelate", KeyEvent.VK_P);
 
         setInputImage("lekcja.jpg");
 
