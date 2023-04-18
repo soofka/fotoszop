@@ -16,8 +16,7 @@ public class App {
     private JMenuBar menuBar;
     private JLabel label;
 
-    final private int width = 640;
-    final private int height = 480;
+    final private float imageScale = 1.f;
 
     App() {
 
@@ -32,6 +31,11 @@ public class App {
         addFilter(RemoveRedFilter.class, "Remove (R)ed", KeyEvent.VK_R);
         addFilter(SaturationIncrease.class, "(S)aturation Increase", KeyEvent.VK_S);
         addFilter(FlipHorizontal.class, "Flip (H)orizontal", KeyEvent.VK_H);
+        addFilter(Sobel.class, "(S)obel", KeyEvent.VK_S);
+        addFilter(RemoveGreen.class, "Rem(o)ve green", KeyEvent.VK_O);
+        addFilter(SetHueToCyan.class, "Set hue to cyan (I)", KeyEvent.VK_I);
+        addFilter(Rotate90CWFilter.class, "Rotate 90 C(W)", KeyEvent.VK_W);
+        addFilter(RandomJitterFilter.class, "Random (j)itter filer", KeyEvent.VK_J);
 
         setInputImage("lekcja.jpg");
 
@@ -60,14 +64,12 @@ public class App {
         this.label = new JLabel(this.displayedImage);
         this.frame.getContentPane().add(label, BorderLayout.CENTER);
 
-        this.frame.pack();
         this.frame.setVisible(true);
     }
     public void setInputImage(String path) {
         try {
             this.inputImage = ImageIO.read(new File(path));
             displayImage(inputImage);
-            this.frame.pack();
         } catch(IOException e) {
             System.out.println(e);
         }
@@ -78,8 +80,9 @@ public class App {
     }
 
     public void displayImage(BufferedImage image) {
-        Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        Image scaledImage = image.getScaledInstance((int) (image.getWidth() * imageScale), (int) (image.getHeight() * imageScale), Image.SCALE_SMOOTH);
         this.displayedImage.setImage(scaledImage);
+        this.frame.pack();
     }
 
 
