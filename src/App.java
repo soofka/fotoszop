@@ -36,6 +36,7 @@ public class App {
         addFilter(SetHueToCyan.class, "Set hue to cyan (I)", KeyEvent.VK_I);
         addFilter(Rotate90CWFilter.class, "Rotate 90 C(W)", KeyEvent.VK_W);
         addFilter(RandomJitterFilter.class, "Random (j)itter filer", KeyEvent.VK_J);
+        addFilter(GaussianSharpening.class, "Gaussia(n) sharpening", KeyEvent.VK_N);
 
         setInputImage("lekcja.jpg");
 
